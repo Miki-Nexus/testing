@@ -1,8 +1,15 @@
-html {
-    background: #242424;
-    color: white;
+body {
+    padding: 12px;
 }
 
-body {
-    padding: 24px;
+.green {
+    color: green;
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
 }
