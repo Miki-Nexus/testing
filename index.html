@@ -1,14 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="main.js"></script>
-</head>
-<body>
-    <h3>Consum energètic</h3>
-    <p id="ce_valor"></p>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="main.js" type="module"></script>
+    </head>
+    <body>
+        <div id="loading">
+            <div class="loader"></div>
+            <h2>Carregant dades...</h2>
+        </div>
+
+        <header>
+            <img src="public/pacte_alcaldies.png" alt="Pacte Alcaldies">
+            <img src="public/diputacio_barcelona.png" alt="Diputació de Barcelona">
+        </header>
+        <main>
+            <div id="title">
+                <img id="logo" src="public/logo_pacte_alcaldies.png" alt="Logo Pacte Alcaldies">
+                <h2>La lliuta local contra el canvi climàtic</h2>
+            </div>
+
+            <p>El Pacte de les Alcaldies pel Clima de l'Energia és la iniciativa europea que involucra les Administracions locals i la seva ciutadania en la lluita contra el canvi climàtic. Els objectius dels municipis compromesos amb el Pacte són: la mitigació del canvi climàtic, l'adaptació i la transició justa.</p>
+
+            <p>Per assolir els objectius els municipis elaboren i executen un Pla d'acció per a l'energia i el clima (PAESC), amb un inventari de consums i emissions de gasos d'efecte hivernacle, avaluació de les vulnerabilitats als impactes del canvi climàtic, diagnosis i propostes d'acció.</p>
+
+            <p>Els objectius del Pacte en mitigació coincideixen amb els de l'Acord Verd Europeu (<i>Green Deal</i>): Reduir el consum energètic en un 36%, reduir les emissions de gasos d'efecte hivernacle en més d'un 55% per al 2030, augmentar el percentatge d'energies renovables al 42,5% per al 2030 i assolir la neutralitat climàtica al 2050.</p>
+
+            <span class="small">Els percentatges reflecteixen els canvis del darrer any disponible respecte les dades de 2005 </span>
+            
+            <table>
+                <tr>
+                    <th>Consum energètic</th>
+                    <th>Emissions de gasos d'efecte hivernacle</th>
+                    <th>Producció d'energies renovables</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><p id="ce_valor"></p></td>
+                    <td><p id="geh_valor"></p></td>
+                    <td><p id="per_valor"></p></td>
+                    <td colspan="2">
+                        <a>Veure més dades</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="grey small">
+                        <span>Verd: &lt; -36%</span>
+                        <span>Taronja entre el -27% i el -36%</span>
+                        <span>Vermell &gt; -27%</span>
+                    </td>
+                    <td class="grey small">
+                        <span>Verd: &lt; -55%</span>
+                        <span>Taronja entre el -41,25% i el -55%</span>
+                        <span>Vermell &gt; -41,25%</span>
+                    </td>
+                    <td class="grey small">
+                        <span>Verd: &gt; 42,5%</span>
+                        <span>Taronja entre el 31,87% i el 42,5%</span>
+                        <span>Vermell &lt; 31,87%</span>
+                    </td>
+                </tr>
+            </table>
+        </main>
+    </body>
 </html>

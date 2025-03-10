@@ -1,14 +1,8 @@
-const ENDPOINTS = {
-    ce: (codi) => {
-        return `https://gissrv.diba.cat/arcgis/rest/services/SITAC/PAES/MapServer/3/query?where=ce_codi_ine%3D${codi}+and+ce_any%3D2006&spatialRel=esriSpatialRelIntersects&outFields=ce_tendencia&returnGeometry=false&f=pjson`
-    }
-}
+import { ENDPOINTS, VALUES } from "./constants.js";
 
 onLoad();
 
 async function onLoad() {
-    console.debug('loaded!');
-
     const url = new URL(window.location.href);
     const codi = url.searchParams.get("codi");
 
@@ -17,25 +11,65 @@ async function onLoad() {
         return;
     }
 
-    console.debug(codi)
+    Promise.all([
+        fetch(ENDPOINTS.municipi(codi)).then(res => res.json()).catch(err => {
+            console.error(err);
+    
+            return null;
+        }),
+        fetch(ENDPOINTS.ce(codi)).then(res => res.json()).catch(err => {
+            console.error(err);
+    
+            return null;
+        }),
+        fetch(ENDPOINTS.geh(codi)).then(res => res.json()).catch(err => {
+            console.error(err);
+    
+            return null;
+        }),
+        fetch(ENDPOINTS.per(codi)).then(res => res.json()).catch(err => {
+            console.error(err);
+    
+            return null;
+        })
+    ]).then(res => {
+        console.log(res)
 
-    const res = await fetch(ENDPOINTS.ce(codi)).then(res => res.json()).catch(err => {
-        console.error(err);
+        if (res[1]) applyStyleAndValue(res[1], 'ce_valor', 'CE_TENDENCIA');
+        if (res[2]) applyStyleAndValue(res[2], 'geh_valor', 'CO2_TENDENCIA');
+        if (res[3]) applyStyleAndValue(res[3], 'per_valor', 'EERR_TENDENCIA');
 
-        return null;
+        const $loader = document.getElementById('loading');
+
+        if ($loader) {
+            $loader.classList.add('hide');
+            
+            setTimeout(() => {
+                $loader.remove();
+            }, 505);
+        }
     });
+}
 
-    console.debug(res)
+/**
+ * Busca l'element HTML i aplica el valor i color corresponent
+ * @param {any} response el resultat de la petició
+ * @param {string} id del element HTML que volem agafar
+ * @param {string} field el nom del camp del que volem agafar les dades
+ */
+function applyStyleAndValue(response, id, field) {
+    console.log(response)
 
-    if (!res) return;
+    const value = response.features[0].attributes[field];
 
-    const ce = res.features[0].attributes.CE_TENDENCIA;
+    const $p = document.getElementById(id);
 
-    const $p = document.getElementById('ce_valor');
+    if (!$p) {
+        console.error(`No s'ha trobat el paragraf amb id '${id}'!`);
+        return;
+    }
 
-    if ($p) $p.innerText = ce;
+    $p.innerText = value;
 
-    if (ce < -36) $p.classList.add('green');
-    else if (ce > -27 && ce < -36) $p.classList.add('orange');
-    else if (ce > -27) $p.classList.add('red');
+    VALUES[id].applyStyle(value, $p);
 }
