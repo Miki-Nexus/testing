@@ -1,6 +1,9 @@
 export const ENDPOINTS = {
+    exb: objectid => {
+        return `https://experience.arcgis.com/experience/492a0462e3154325953ef2dc15b823c6?draft=true#data_s=id%3AdataSource_1-2%3A${objectid}`;
+    },
     municipi: codi => {
-        return `https://gissrv.diba.cat/arcgis/rest/services/SITAC/PAES/MapServer/2/query?where=ine%3D${codi}&outFields=objectid,ine&returnGeometry=false&f=pjson`;
+        return `https://gissrv.diba.cat/arcgis/rest/services/SITAC/PAES/MapServer/2/query?where=ine%3D${codi}&outFields=objectid&returnGeometry=false&f=pjson`;
     },
     /**
      * @param {number} codi del municipi
@@ -38,7 +41,6 @@ export const VALUES = {
          * @param {HTMLParagraphElement} $p l'element al qual volem aplicar l'estil corresponent
          */
         applyStyle: function (value, $p) {
-            console.log(this)
             if (value < this.green) $p.classList.add('green');
             else if (value > this.orange.min && value < this.orange.max) $p.classList.add('orange');
             else if (value > this.red) $p.classList.add('red');
@@ -56,7 +58,6 @@ export const VALUES = {
          * @param {HTMLParagraphElement} $p l'element al qual volem aplicar l'estil corresponent
          */
         applyStyle: function (value, $p) {
-            console.log(this)
             if (value < this.green) $p.classList.add('green');
             else if (value > this.orange.min && value < this.orange.max) $p.classList.add('orange');
             else if (value > this.red) $p.classList.add('red');
@@ -70,7 +71,6 @@ export const VALUES = {
          * @param {HTMLParagraphElement} $p l'element al qual volem aplicar l'estil corresponent
          */
         applyStyle: function (value, $p) {
-            console.log(this)
             if (value > this.max) $p.classList.add('green');
             else if (value > this.min && value < this.max) $p.classList.add('orange');
             else if (value < this.min) $p.classList.add('red');

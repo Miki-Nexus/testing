@@ -33,8 +33,16 @@ async function onLoad() {
             return null;
         })
     ]).then(res => {
-        console.log(res)
+        if (res[0]) {
+            const oid = res[0].features[0].attributes.OBJECTID;
 
+            /**
+             * @type {HTMLAnchorElement}
+             */
+            const $a = document.getElementById('to-builder');
+
+            $a.href = ENDPOINTS.exb(oid);
+        }
         if (res[1]) applyStyleAndValue(res[1], 'ce_valor', 'CE_TENDENCIA');
         if (res[2]) applyStyleAndValue(res[2], 'geh_valor', 'CO2_TENDENCIA');
         if (res[3]) applyStyleAndValue(res[3], 'per_valor', 'EERR_TENDENCIA');
@@ -48,6 +56,8 @@ async function onLoad() {
                 $loader.remove();
             }, 505);
         }
+    }).catch(err => {
+        console.error(err);
     });
 }
 
@@ -58,8 +68,6 @@ async function onLoad() {
  * @param {string} field el nom del camp del que volem agafar les dades
  */
 function applyStyleAndValue(response, id, field) {
-    console.log(response)
-
     const value = response.features[0].attributes[field];
 
     const $p = document.getElementById(id);

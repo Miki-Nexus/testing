@@ -1,5 +1,6 @@
 :root {
-    --pad: 4rem;
+    --pad-v: 2rem;
+    --pad-w: 4rem;
 }
 
 p {
@@ -10,15 +11,24 @@ span {
     display: block;
 }
 
+a#to-builder {
+    all: unset;
+
+    background: #5488dd;
+    padding: 1rem 1rem;
+    color: white;
+    cursor: pointer;
+}
+
 html,
 body {
     margin: 0;
-    height: calc(100% - var(--pad));
-    width: calc(100% - var(--pad));
+    height: calc(100% - var(--pad-v));
+    width: calc(100% - var(--pad-w));
 }
 
 body {
-    padding: var(--pad);
+    padding: var(--pad-v) var(--pad-w);
     display: flex;
     flex-direction: column;
 }
@@ -40,7 +50,7 @@ body header {
 }
 
 body header>img {
-    height: 75px;
+    height: 50px;
 }
 
 body main {
@@ -67,8 +77,33 @@ body main p {
     font-size: 1.25rem;
 }
 
-body main table {
+body main article#grid {
     margin-top: 1rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+body main article#grid div.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body main article#grid div.col h2 {
+    text-align: center;
+    color: #32355f;
+    font-weight: bold;
+}
+
+body main article#grid div.col > p {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+body main article#grid div.col > p::after {
+    content: '%';
 }
 
 .small {
@@ -90,8 +125,6 @@ body main table {
 .grey {
     color: #96999b;
 }
-
-/* th : #32355f */
 
 .loader {
     width: 48px;
@@ -163,5 +196,42 @@ body main table {
 
     to {
         opacity: 0;
+    }
+}
+
+/* For screens less than 992px */
+@media (max-width: 991.98px) {
+    body main div#title {
+        font-size: 1.5rem;
+    }
+
+    body main div#title img#logo {
+        height: 150px;
+        margin-right: 2rem;
+    }
+
+    body main article#grid {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* For screens less than 576px */
+@media (max-width: 575.98px) {
+    body header {
+        justify-content: center;
+    }
+    body main div#title {
+        font-size: 1.25rem;
+    }
+
+    body main div#title img#logo {
+        height: 100px;
+        margin-right: 2rem;
+    }
+
+    body main article#grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
     }
 }

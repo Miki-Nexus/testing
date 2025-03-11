@@ -31,39 +31,38 @@
 
             <span class="small">Els percentatges reflecteixen els canvis del darrer any disponible respecte les dades de 2005 </span>
             
-            <table>
-                <tr>
-                    <th>Consum energètic</th>
-                    <th>Emissions de gasos d'efecte hivernacle</th>
-                    <th>Producció d'energies renovables</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td><p id="ce_valor"></p></td>
-                    <td><p id="geh_valor"></p></td>
-                    <td><p id="per_valor"></p></td>
-                    <td colspan="2">
-                        <a>Veure més dades</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="grey small">
+            <article id="grid">
+                <div class="col">
+                    <h2>Consum energètic</h2>
+                    <p id="ce_valor"></p>
+                    <div class="grey small">
                         <span>Verd: &lt; -36%</span>
                         <span>Taronja entre el -27% i el -36%</span>
                         <span>Vermell &gt; -27%</span>
-                    </td>
-                    <td class="grey small">
+                    </div>
+                </div>
+                <div class="col">
+                    <h2>Emissions de gasos d'efecte hivernacle</h2>
+                    <p id="geh_valor"></p>
+                    <div class="grey small">
                         <span>Verd: &lt; -55%</span>
                         <span>Taronja entre el -41,25% i el -55%</span>
                         <span>Vermell &gt; -41,25%</span>
-                    </td>
-                    <td class="grey small">
+                    </div>
+                </div>
+                <div class="col">
+                    <h2>Producció d'energies renovables</h2>
+                    <p id="per_valor"></p>
+                    <div class="grey small">
                         <span>Verd: &gt; 42,5%</span>
                         <span>Taronja entre el 31,87% i el 42,5%</span>
                         <span>Vermell &lt; 31,87%</span>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </div>
+                <div class="col">
+                    <a id="to-builder" target="_blank">Veure més dades</a>
+                </div>
+            </article>
         </main>
     </body>
 </html>
