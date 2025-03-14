@@ -11,6 +11,7 @@
 
 * {
     font-family: "neue-haas-grotesk-display", sans-serif;
+    color: #333;
 }
 
 p {
@@ -83,7 +84,7 @@ body main div#title {
     margin-bottom: 1rem;
 }
 
-body main div#title h2 {
+body main div#title h2, body main div#title h2 b {
     color: var(--color-corporatiu);
 }
 
@@ -118,6 +119,7 @@ body main article#grid div.col > h2 {
 body main article#grid div.col > p {
     font-size: 2rem;
     margin: 1rem 0;
+    text-shadow: 1px 1px 1px #ccc;
 }
 
 body main article#grid div.col > p::after {
