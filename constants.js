@@ -35,42 +35,42 @@ export const ENDPOINTS = {
 
 export const VALUES = {
     ce_valor: {
-        min: -36,
-        max: -27,
+        verd: -36,
+        vermell: -27,
         /**
          * @param {number} value el valor actual
          * @param {HTMLParagraphElement} $p l'element al qual volem aplicar l'estil corresponent
          */
         applyStyle: function (value, $p) {
-            if (value < this.min) $p.classList.add('green');
-            else if (value > this.min && value < this.max) $p.classList.add('orange');
-            else if (value > this.max) $p.classList.add('red');
+            if (value < this.verd) $p.classList.add('green');
+            else if (value > this.vermell) $p.classList.add('red');
+            else $p.classList.add('orange');
         }
     },
     geh_valor: {
-        min: -55,
-        max: -41.25,
+        verd: -55,
+        vermell: -41.25,
         /**
          * @param {number} value el valor actual
          * @param {HTMLParagraphElement} $p l'element al qual volem aplicar l'estil corresponent
          */
         applyStyle: function (value, $p) {
-            if (value < this.min) $p.classList.add('green');
-            else if (value > this.max && value < this.min) $p.classList.add('orange');
-            else if (value > this.max) $p.classList.add('red');
+            if (value < this.verd) $p.classList.add('green');
+            else if (value > this.vermell) $p.classList.add('red');
+            else $p.classList.add('orange');
         }
     },
     per_valor: {
-        min: 31.87,
-        max: 42.5,
+        verd: 42.5,
+        vermell: 31.87,
         /**
          * @param {number} value el valor actual
          * @param {HTMLParagraphElement} $p l'element al qual volem aplicar l'estil corresponent
          */
         applyStyle: function (value, $p) {
-            if (value > this.max) $p.classList.add('green');
-            else if (value > this.min && value < this.max) $p.classList.add('orange');
-            else if (value < this.min) $p.classList.add('red');
+            if (value > this.verd) $p.classList.add('green');
+            else if (value < this.vermell) $p.classList.add('red');
+            else $p.classList.add('orange');
         }
     }
 }
