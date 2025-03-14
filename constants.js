@@ -43,7 +43,7 @@ export const VALUES = {
          */
         applyStyle: function (value, $p) {
             if (value < this.min) $p.classList.add('green');
-            else if (value > this.max && value < this.min) $p.classList.add('orange');
+            else if (value > this.min && value < this.max) $p.classList.add('orange');
             else if (value > this.max) $p.classList.add('red');
         }
     },
