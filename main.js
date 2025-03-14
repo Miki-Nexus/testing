@@ -13,23 +13,29 @@ async function onLoad() {
         return;
     }
 
+    const year = await fetch(ENDPOINTS.lastYear()).then(res => res.json()).then(res => res.features[0].attributes.ULTIM_ANY).catch(err => {
+        console.error(err);
+
+        return 2006;
+    });
+
     Promise.all([
         fetch(ENDPOINTS.municipi(codi)).then(res => res.json()).catch(err => {
             console.error(err);
     
             return null;
         }),
-        fetch(ENDPOINTS.ce(codi)).then(res => res.json()).catch(err => {
+        fetch(ENDPOINTS.ce(codi, year)).then(res => res.json()).catch(err => {
             console.error(err);
     
             return null;
         }),
-        fetch(ENDPOINTS.geh(codi)).then(res => res.json()).catch(err => {
+        fetch(ENDPOINTS.geh(codi, year)).then(res => res.json()).catch(err => {
             console.error(err);
     
             return null;
         }),
-        fetch(ENDPOINTS.per(codi)).then(res => res.json()).catch(err => {
+        fetch(ENDPOINTS.per(codi, year)).then(res => res.json()).catch(err => {
             console.error(err);
     
             return null;

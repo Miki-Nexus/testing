@@ -1,6 +1,9 @@
 export const BASE_URL = 'https://gissrv.diba.cat';
 
 export const ENDPOINTS = {
+    lastYear: () => {
+        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/15/query?where=1=1&returnGeometry=false&f=pjson`;
+    },
     exb: objectid => {
         return `https://experience.arcgis.com/experience/492a0462e3154325953ef2dc15b823c6?draft=true#data_s=id%3AdataSource_1-2%3A${objectid}`;
     },
@@ -11,22 +14,22 @@ export const ENDPOINTS = {
      * @param {number} codi del municipi
      * @returns la url per fer la petició
      */
-    ce: codi => {
-        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/3/query?where=ce_codi_ine%3D${codi}+and+ce_any%3D2006&outFields=ce_tendencia&returnGeometry=false&f=pjson`;
+    ce: (codi, year) => {
+        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/3/query?where=ce_codi_ine%3D${codi}+and+ce_any%3D${year}&outFields=ce_tendencia&returnGeometry=false&f=pjson`;
     },
     /**
      * @param {number} codi del municipi
      * @returns la url per fer la petició
      */
-    geh: codi => {
-        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/7/query?where=co2_codi_ine%3D${codi}+and+co2_any%3D2006&outFields=co2_tendencia&returnGeometry=false&f=pjson`;
+    geh: (codi, year) => {
+        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/7/query?where=co2_codi_ine%3D${codi}+and+co2_any%3D${year}&outFields=co2_tendencia&returnGeometry=false&f=pjson`;
     },
     /**
      * @param {number} codi del municipi
      * @returns la url per fer la petició
      */
-    per: codi => {
-        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/11/query?where=eerr_codi_ine%3D${codi}+and+eerr_any%3D2006&outFields=eerr_tendencia&returnGeometry=false&f=pjson`;
+    per: (codi, year) => {
+        return `${BASE_URL}/arcgis/rest/services/SITAC/PAES/MapServer/11/query?where=eerr_codi_ine%3D${codi}+and+eerr_any%3D${year}&outFields=eerr_tendencia&returnGeometry=false&f=pjson`;
     }
 }
 
